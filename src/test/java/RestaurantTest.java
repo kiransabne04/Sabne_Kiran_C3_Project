@@ -59,7 +59,25 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //Start -> Tests for displaying Order Value
+    //order value should increase after user selects item from menu items.
+    @Test
+    public void order_value_should_get_sum_total_when_item_is_selected(){
+        items = restaurant.getMenu();
+        assertEquals(388, restaurant.getOrderValue(items));
+    }
 
+    // Order value should decrease after user deselects items from his checkoutList.
+    @Test
+    public void order_value_should_decrease_sum_total_when_item_is_deselected(){
+        items = restaurant.getMenu();
+        int total = restaurant.getOrderValue(items);
+        int deselectedItemPrice = items.get(1).getPrice();
+        items.remove(1);
+        assertEquals(total - deselectedItemPrice, restaurant.getOrderValue(items));
+    }
+
+//End -> Tests for displaying Order Value
 
 
 }
