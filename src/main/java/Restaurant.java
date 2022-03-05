@@ -77,5 +77,11 @@ public class Restaurant {
         this.closingTime = closingTime;
     }
 
-
+    public int getOrderValue(List<Item> items){
+        int totalSum = 0;
+        for (Item item : items){
+            totalSum += item.getPrice();
+        }
+        return  totalSum;
+    }
 }
